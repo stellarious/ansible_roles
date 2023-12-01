@@ -19,3 +19,6 @@
     content: "<h1> Hi from {{ ansible_hostname }}!"
     mode: 0755
   diff: true
+- name: Check nginx status
+  command: systemctl status nginx
+  changed_when: false

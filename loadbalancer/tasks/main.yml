@@ -19,3 +19,6 @@
     mode: 0644
   diff: true
   notify: Reload nginx
+- name: Check nginx status
+  command: systemctl status nginx
+  changed_when: false
