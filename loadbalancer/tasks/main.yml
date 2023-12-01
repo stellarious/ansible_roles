@@ -1,0 +1,16 @@
+---
+# tasks file for roles/loadbalancer
+- name: Updating packages
+  apt:
+    update_cache: true
+- name: Installing nginx
+  apt: name=nginx state=present
+- name: Start and enable nginx
+  service: name=nginx state=started enabled=yes
+- name: Generate LB config
+  template:
+    src: nginx-lb.j2
+    dest: /etc/nginx/sites-available/default
+    mode: 0644
+  diff: true
+  notify: Reload nginx

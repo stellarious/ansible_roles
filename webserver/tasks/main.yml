@@ -1,5 +1,18 @@
 ---
 # tasks file for roles/webserver
+- name: Updating packages
+  apt:
+    update_cache: true
+- name: Installing services
+  apt:
+    name:
+      - nginx
+    state: present
+- name: Start and enable nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
 - name: Copy content for nginx
   copy:
     dest: "{{ content_path }}/index.html"
