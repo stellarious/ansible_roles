@@ -1,0 +1,8 @@
+---
+# tasks file for roles/webserver
+- name: Copy content for nginx
+  copy:
+    dest: "{{ content_path }}/index.html"
+    content: "<h1> Hi from {{ ansible_hostname }}!"
+    mode: 0755
+  diff: true
