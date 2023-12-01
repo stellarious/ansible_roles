@@ -4,9 +4,14 @@
   apt:
     update_cache: true
 - name: Installing nginx
-  apt: name=nginx state=present
+  apt:
+    name: nginx
+    state: present
 - name: Start and enable nginx
-  service: name=nginx state=started enabled=yes
+  service:
+    name: nginx
+    state: started
+    enabled: yes
 - name: Generate LB config
   template:
     src: nginx-lb.j2
